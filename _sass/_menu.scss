@@ -11,12 +11,13 @@
 
 .site-navigation--header {
   align-items: center;
+  box-sizing: border-box;
   display: flex;
   gap: 1.5rem;
   justify-content: space-between;
   margin-top: 0;
-  padding: 1.25rem 1.5rem 0;
-  width: 100%;
+  max-width: 100%;
+  padding: 1.25rem 0 0;
   @media (max-width: $on-tablet) {
     align-items: flex-start;
     flex-direction: column;
@@ -25,6 +26,7 @@
 }
 
 .site-navigation ul {
+  gap: .15rem;
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -32,8 +34,10 @@
 }
 
 .site-navigation--header ul {
+  flex: 1 1 auto;
   justify-content: flex-end;
   margin-left: auto;
+  min-width: 0;
 }
 
 .site-navigation li {
@@ -49,7 +53,7 @@
 .site-brand {
   color: $text-color;
   flex-shrink: 0;
-  font-size: 1.75rem;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
