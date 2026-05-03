@@ -6,6 +6,10 @@ layout: default
 {% if site.paginate and site.paginate_path %}
   {% assign has_pagination = true %}
 {% endif %}
+{% assign has_recent_posts = false %}
+{% if site.posts.size > 0 %}
+  {% assign has_recent_posts = true %}
+{% endif %}
 {% assign show_home_sections = true %}
 {% if paginator and paginator.page > 1 %}
   {% assign show_home_sections = false %}
@@ -17,17 +21,7 @@ layout: default
   {% include back-link.html %}
 {% else %}
   <header class="site-masthead">
-    {% include menu.html %}
-    {% if site.title %}
-      <h1>
-        {{ site.title }}
-      </h1>
-    {% endif %}
-    {% if site.description %}
-      <h2>
-        {{ site.description }}
-      </h2>
-    {% endif %}
+    {% include menu.html show_brand=true hide_home=true %}
   </header>
 {% endif %}
 
@@ -39,51 +33,53 @@ layout: default
     </div>
   {% endif %}
 
-  <section class="home-section" id="posts" aria-labelledby="posts-title">
-    <h2 class="content-title divided" id="posts-title">
-    {% if has_pagination and paginator and paginator.page > 1 %}
-      Page {{ paginator.page }}
-    {% else %}
-      Recent Posts
-    {% endif %}
-    </h2>
-
-    {% if has_pagination and paginator %}
-    
-      <ul class="post-list">
-        {% for post in paginator.posts %}
-          {% include post-list-item.html %}
-        {% endfor %}
-      </ul>
-
-      {% if paginator.total_pages > 1 %}
-
-        <div class="post-pagination">
-          {% if paginator.next_page %}
-            <a href="{{ paginator.next_page_path | prepend: site.baseurl  }}" class="pagination-next btn">&lang;&nbsp;Older</a>
-          {% else %}
-            <span>&nbsp;</span>
-          {% endif %}
-          <span class="pagination-number">{{ paginator.page }} of {{ paginator.total_pages }}</span>
-          {% if paginator.previous_page %}
-            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="pagination-previous btn">Newer&nbsp;&rang;</a>
-          {% else %}
-            <span>&nbsp;</span>
-          {% endif %}
-        </div>
-
+  {% if has_recent_posts %}
+    <section class="home-section" id="posts" aria-labelledby="posts-title">
+      <h2 class="content-title divided" id="posts-title">
+      {% if has_pagination and paginator and paginator.page > 1 %}
+        Page {{ paginator.page }}
+      {% else %}
+        Recent Posts
       {% endif %}
+      </h2>
 
-    {% else %}
+      {% if has_pagination and paginator %}
+      
+        <ul class="post-list">
+          {% for post in paginator.posts %}
+            {% include post-list-item.html %}
+          {% endfor %}
+        </ul>
 
-      <ul class="post-list">
-        {% for post in site.posts %}
-          {% include post-list-item.html %}
-        {% endfor %}
-      </ul>
-  
-    {% endif %}
-  </section>
+        {% if paginator.total_pages > 1 %}
+
+          <div class="post-pagination">
+            {% if paginator.next_page %}
+              <a href="{{ paginator.next_page_path | prepend: site.baseurl  }}" class="pagination-next btn">&lang;&nbsp;Older</a>
+            {% else %}
+              <span>&nbsp;</span>
+            {% endif %}
+            <span class="pagination-number">{{ paginator.page }} of {{ paginator.total_pages }}</span>
+            {% if paginator.previous_page %}
+              <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="pagination-previous btn">Newer&nbsp;&rang;</a>
+            {% else %}
+              <span>&nbsp;</span>
+            {% endif %}
+          </div>
+
+        {% endif %}
+
+      {% else %}
+
+        <ul class="post-list">
+          {% for post in site.posts %}
+            {% include post-list-item.html %}
+          {% endfor %}
+        </ul>
+    
+      {% endif %}
+    </section>
+  {% endif %}
 
   {% if show_home_sections %}
     {% assign poetry_entries = site.poetry | sort: "date" | reverse %}

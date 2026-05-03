@@ -1,13 +1,20 @@
 {% assign menu = site.data.menu %}
 
 {% if menu %}
-  <nav class="site-navigation" role="navigation">
+  <nav class="site-navigation{% if include.show_brand %} site-navigation--header{% endif %}" role="navigation">
+    {% if include.show_brand and site.title %}
+      <a class="site-brand" href="{{ '/' | prepend: site.baseurl }}">
+        {{ site.title }}
+      </a>
+    {% endif %}
     <ul>
-      <li>
-        <a href="{{ '/' | prepend: site.baseurl }}">
-          Home
-        </a>
-      </li>
+      {% unless include.hide_home %}
+        <li>
+          <a href="{{ '/' | prepend: site.baseurl }}">
+            Home
+          </a>
+        </li>
+      {% endunless %}
     {% for item in site.data.menu %}
       <li {% if page.url == item.url %}class="active"{% endif %}>
         {% if item.url contains 'http' %}
