@@ -2,9 +2,18 @@
 layout: default
 ---
 
-{% if site.data.menu and site.paginate and site.paginate_path and paginator.page > 1 %}
+{% assign has_pagination = false %}
+{% if site.paginate and site.paginate_path %}
+  {% assign has_pagination = true %}
+{% endif %}
+{% assign show_home_sections = true %}
+{% if paginator and paginator.page > 1 %}
+  {% assign show_home_sections = false %}
+{% endif %}
+
+{% if site.data.menu and has_pagination and paginator and paginator.page > 1 %}
   {% include menu.html %}
-{% elsif site.paginate and site.paginate_path and paginator.page > 1 %}
+{% elsif has_pagination and paginator and paginator.page > 1 %}
   {% include back-link.html %}
 {% else %}
   <header class="site-masthead">
@@ -14,7 +23,7 @@ layout: default
         {{ site.title }}
       </h1>
     {% endif %}
-    {% if site.title %}
+    {% if site.description %}
       <h2>
         {{ site.description }}
       </h2>
@@ -24,49 +33,81 @@ layout: default
 
 <main class="home" id="main" role="main" aria-label="Content">
 
-  <h1 class="content-title divided">
-    {% if site.paginate and site.paginate_path and paginator.page > 1 %}
+  {% if show_home_sections %}
+    <div class="home-intro">
+      {{ content }}
+    </div>
+  {% endif %}
+
+  <section class="home-section" id="posts" aria-labelledby="posts-title">
+    <h2 class="content-title divided" id="posts-title">
+    {% if has_pagination and paginator and paginator.page > 1 %}
       Page {{ paginator.page }}
     {% else %}
-      Contents
+      Recent Posts
     {% endif %}
-  </h1>
+    </h2>
 
-  {% if site.paginate and site.paginate_path %}
+    {% if has_pagination and paginator %}
     
-    <ul class="post-list">
-      {% for post in paginator.posts %}
-        {% include post-list-item.html %}
-      {% endfor %}
-    </ul>
+      <ul class="post-list">
+        {% for post in paginator.posts %}
+          {% include post-list-item.html %}
+        {% endfor %}
+      </ul>
 
-    {% if paginator.total_pages > 1 %}
+      {% if paginator.total_pages > 1 %}
 
-      <div class="post-pagination">
-        {% if paginator.next_page %}
-          <a href="{{ paginator.next_page_path | prepend: site.baseurl  }}" class="pagination-next btn">&lang;&nbsp;Older</a>
-        {% else %}
-          <span>&nbsp;</span>
-        {% endif %}
-        <span class="pagination-number">{{ paginator.page }} of {{ paginator.total_pages }}</span>
-        {% if paginator.previous_page %}
-          <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="pagination-previous btn">Newer&nbsp;&rang;</a>
-        {% else %}
-          <span>&nbsp;</span>
-        {% endif %}
-      </div>
+        <div class="post-pagination">
+          {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path | prepend: site.baseurl  }}" class="pagination-next btn">&lang;&nbsp;Older</a>
+          {% else %}
+            <span>&nbsp;</span>
+          {% endif %}
+          <span class="pagination-number">{{ paginator.page }} of {{ paginator.total_pages }}</span>
+          {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | prepend: site.baseurl }}" class="pagination-previous btn">Newer&nbsp;&rang;</a>
+          {% else %}
+            <span>&nbsp;</span>
+          {% endif %}
+        </div>
 
-    {% endif %}
+      {% endif %}
 
-  {% else %}
+    {% else %}
 
-    <ul class="post-list">
-      {% for post in site.posts %}
-        {% include post-list-item.html %}
-      {% endfor %}
-    </ul>
+      <ul class="post-list">
+        {% for post in site.posts %}
+          {% include post-list-item.html %}
+        {% endfor %}
+      </ul>
   
-  {% endif %}
-    
+    {% endif %}
+  </section>
 
+  {% if show_home_sections %}
+    {% assign poetry_entries = site.poetry | sort: "date" | reverse %}
+    {% if poetry_entries.size > 0 %}
+      <section class="home-section" id="poetry" aria-labelledby="poetry-title">
+        <h2 class="content-title divided" id="poetry-title">Poetry</h2>
+        <ul class="post-list">
+          {% for post in poetry_entries %}
+            {% include post-list-item.html %}
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+
+    {% assign writing_entries = site.writing | sort: "date" | reverse %}
+    {% if writing_entries.size > 0 %}
+      <section class="home-section" id="writing" aria-labelledby="writing-title">
+        <h2 class="content-title divided" id="writing-title">Writing</h2>
+        <ul class="post-list">
+          {% for post in writing_entries %}
+            {% include post-list-item.html %}
+          {% endfor %}
+        </ul>
+      </section>
+    {% endif %}
+  {% endif %}
 </main>

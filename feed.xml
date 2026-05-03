@@ -18,7 +18,9 @@ layout: null
           {% if post.title != "" %}
             <title>{{ post.title | xml_escape }}</title>
           {% endif %}
-          <author>{{ site.email }} ({{ site.title }})</author>
+          {% if site.email %}
+            <author>{{ site.email }} ({{ site.title }})</author>
+          {% endif %}
           <description>
             {{ post.content | xml_escape }}
           </description>

@@ -118,6 +118,14 @@ figcaption {
   padding: 4em 1em;
 }
 
+.home-intro {
+  margin-bottom: 4rem;
+}
+
+.home-section + .home-section {
+  margin-top: 4rem;
+}
+
 .content-title {
   font-size: 2em;
   margin-bottom: 2em;
