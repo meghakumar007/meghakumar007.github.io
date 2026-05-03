@@ -7,7 +7,7 @@ content_class: about-page
 
 <div class="about-container">
   <div class="about-photo-container">
-    <img src="https://raw.githubusercontent.com/rishisareen/blog-images/master/images/2026/04/14/image-20260414182817894%7Bextension%7D"
+    <img src="{{ '/assets/images/megha-portrait.jpg' | relative_url }}"
      alt="Megha Kumar"
      class="about-photo">
   </div>

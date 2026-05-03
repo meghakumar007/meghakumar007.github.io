@@ -19,13 +19,31 @@ layout: default
   {% include menu.html %}
 {% elsif has_pagination and paginator and paginator.page > 1 %}
   {% include back-link.html %}
-{% else %}
+{% elsif show_home_sections == false %}
   {% include site-header.html %}
 {% endif %}
 
-<main class="home" id="main" role="main" aria-label="Content">
+<main class="home home--landing" id="main" role="main" aria-label="Content">
 
   {% if show_home_sections %}
+    <section class="landing-hero" aria-labelledby="landing-title">
+      <img
+        src="{{ '/assets/images/megha-portrait.jpg' | relative_url }}"
+        alt="Portrait of Megha Kumar"
+        class="landing-hero__portrait">
+      <div class="landing-hero__body">
+        <h1 id="landing-title">{{ site.title }}</h1>
+        {% if page.hero_subtitle %}
+          <p class="landing-hero__subtitle">{{ page.hero_subtitle }}</p>
+        {% endif %}
+        <nav class="landing-hero__nav" aria-label="Featured sections">
+          <a href="{{ '/poetry/' | relative_url }}">Poetry</a>
+          <a href="{{ '/writing/' | relative_url }}">Writing</a>
+          <a href="{{ '/about/' | relative_url }}">About</a>
+        </nav>
+      </div>
+    </section>
+
     <div class="home-intro">
       {{ content }}
     </div>
