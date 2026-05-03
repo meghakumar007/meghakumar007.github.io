@@ -118,6 +118,10 @@ figcaption {
   padding: 4em 1em;
 }
 
+.about-page {
+  max-width: 44rem;
+}
+
 .home-intro {
   margin-bottom: 4rem;
 }
@@ -140,6 +144,37 @@ figcaption {
 .collection-empty {
   color: $muted-text-color;
   text-align: center;
+}
+
+.about-container {
+  align-items: start;
+  display: grid;
+  gap: 2rem;
+}
+
+.about-photo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.about-photo {
+  border-radius: 50%;
+  height: 200px;
+  margin: 0;
+  object-fit: cover;
+  width: 200px;
+}
+
+.about-content p {
+  margin-bottom: 1.25rem;
+  text-indent: 0;
+  text-align: left;
+}
+
+@media (min-width: $on-tablet) {
+  .about-container {
+    grid-template-columns: 200px minmax(0, 1fr);
+  }
 }
 
 .content-title {

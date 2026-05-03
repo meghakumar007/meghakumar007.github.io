@@ -20,9 +20,7 @@ layout: default
 {% elsif has_pagination and paginator and paginator.page > 1 %}
   {% include back-link.html %}
 {% else %}
-  <header class="site-masthead">
-    {% include menu.html show_brand=true hide_home=true %}
-  </header>
+  {% include site-header.html %}
 {% endif %}
 
 <main class="home" id="main" role="main" aria-label="Content">

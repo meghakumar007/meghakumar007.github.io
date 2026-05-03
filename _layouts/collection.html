@@ -3,12 +3,12 @@ layout: default
 ---
 
 {% if site.data.menu %}
-  {% include menu.html show_brand=true hide_home=true %}
+  {% include site-header.html %}
 {% else %}
   {% include back-link.html %}
 {% endif %}
 
-<main class="home" id="main" role="main" aria-label="Content">
+<main class="home{% if page.content_class %} {{ page.content_class }}{% endif %}" id="main" role="main" aria-label="Content">
   <header class="collection-header">
     <h1 class="content-title divided">{{ page.title }}</h1>
     {% if page.description %}

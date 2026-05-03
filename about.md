@@ -1,14 +1,15 @@
 ---
-layout: page
+layout: collection
 title: About
+permalink: /about/
+content_class: about-page
 ---
 
 <div class="about-container">
   <div class="about-photo-container">
     <img src="https://raw.githubusercontent.com/rishisareen/blog-images/master/images/2026/04/14/image-20260414182817894%7Bextension%7D"
      alt="Megha Kumar"
-     class="about-photo"
-     style="width: 200px; object-fit: cover; border-radius: 50%;">
+     class="about-photo">
   </div>
   <div class="about-content">
     <p>Hey there! I'm Megha.</p>

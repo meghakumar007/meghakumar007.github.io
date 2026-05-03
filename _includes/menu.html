@@ -1,4 +1,5 @@
 {% assign menu = site.data.menu %}
+{% assign current_url = page.url | replace: '.html', '/' | replace: '//', '/' %}
 
 {% if menu %}
   <nav class="site-navigation{% if include.show_brand %} site-navigation--header{% endif %}" role="navigation">
@@ -16,7 +17,8 @@
         </li>
       {% endunless %}
     {% for item in site.data.menu %}
-      <li {% if page.url == item.url %}class="active"{% endif %}>
+      {% assign item_url = item.url | replace: '.html', '/' | replace: '//', '/' %}
+      <li {% if current_url == item_url %}class="active"{% endif %}>
         {% if item.url contains 'http' %}
           <a href="{{ item.url }}">
             {{ item.title }}
