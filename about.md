@@ -1,17 +1,21 @@
 ---
-layout: post
+layout: page
 title: About
 ---
 
-Undoubtably one of the great minds of our time, Christopher Hitchens challenged his readers to think deeply on topics of politics, religion, war, and science. This Jekyll theme is designed in his memory.
-
-<figure>
-  <img alt="Christopher Hitchens" src="https://upload.wikimedia.org/wikipedia/commons/6/63/Christopher_Hitchens_2008-04-24_001.jpg" />
-  <figcaption>
-    Photo by Fri Tanke and licensed under the <a href="https://creativecommons.org/licenses/by/3.0/deed.en">Creative Commons Attribution 3.0 Unported</a> license.
-  </figcaption>
-</figure>
-
-From [Wikipedia](https://en.wikipedia.org/wiki/Christopher_Hitchens):
-
->Christopher Eric Hitchens (13 April 1949 – 15 December 2011) was an Anglo-American author, columnist, essayist, orator, religious and literary critic, social critic, and journalist. Hitchens was the author, co-author, editor or co-editor of over 30 books, including five collections of essays on culture, politics and literature. A staple of public discourse, his confrontational style of debate made him both a lauded intellectual and a controversial public figure. He contributed to New Statesman, The Nation, The Weekly Standard, The Atlantic, London Review of Books, The Times Literary Supplement, Slate, Free Inquiry and Vanity Fair.
+<div class="about-container">
+  <div class="about-photo-container">
+    <img src="https://raw.githubusercontent.com/rishisareen/blog-images/master/images/2026/04/14/image-20260414182817894%7Bextension%7D"
+     alt="Megha Kumar"
+     class="about-photo"
+     style="width: 200px; object-fit: cover; border-radius: 50%;">
+  </div>
+  <div class="about-content">
+    <p>Hey there! I'm Megha.</p>
+    <p>I've spent most of my professional life working in corporates, solving problems, building teams, and figuring out how complex systems can run a little better every day. Work has taught me discipline, structure, and the value of showing up consistently.</p>
+    <p>Outside of work, I'm constantly curious about life in its many forms - running long distances, lifting weights, reading about health and science, learning new things, and trying to understand how habits, mindset, and discipline shape who we become.</p>
+    <p>This website is a small corner of the internet where I plan to write about whatever occupies my mind — sport, health, work, books, ideas, small observations, and sometimes just random scribbles.</p>
+    <p>Nothing here is meant to be perfect or polished. Just thoughts in progress.</p>
+    <p>If something here resonates, that's a bonus.</p>
+  </div>
+</div>
