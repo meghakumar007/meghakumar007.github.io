@@ -1,0 +1,11 @@
+{% assign entries = include.entries | sort: "date" | reverse %}
+
+{% if entries.size > 0 %}
+  <ul class="post-list">
+    {% for post in entries %}
+      {% include post-list-item.html %}
+    {% endfor %}
+  </ul>
+{% else %}
+  <p class="collection-empty">Nothing published here yet.</p>
+{% endif %}

@@ -126,6 +126,22 @@ figcaption {
   margin-top: 4rem;
 }
 
+.collection-header {
+  margin-bottom: 3rem;
+}
+
+.collection-description {
+  color: $muted-text-color;
+  margin: -1rem auto 0;
+  max-width: 28rem;
+  text-align: center;
+}
+
+.collection-empty {
+  color: $muted-text-color;
+  text-align: center;
+}
+
 .content-title {
   font-size: 2em;
   margin-bottom: 2em;
